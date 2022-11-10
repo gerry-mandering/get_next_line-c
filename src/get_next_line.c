@@ -6,7 +6,7 @@
 /*   By: minseok2 <minseok2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:39:24 by minseok2          #+#    #+#             */
-/*   Updated: 2022/11/10 14:50:33 by minseok2         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:03:26 by minseok2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	static t_list	*list;
-	t_list			*current_node;
+	static t_glist	*list;
+	t_glist			*current_node;
 	char			*line;
 	int				total_len;
 
@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 	return (make_line(&list, current_node, line, &total_len));
 }
 
-char	*str_join_from_remain(t_list *node, int *total_len)
+char	*str_join_from_remain(t_glist *node, int *total_len)
 {
 	char	*joined_line;
 	int		i;
@@ -63,7 +63,7 @@ char	*str_join_from_remain(t_list *node, int *total_len)
 	return (joined_line);
 }
 
-char	*make_line(t_list **list, t_list *node, char *line, int *total_len)
+char	*make_line(t_glist **list, t_glist *node, char *line, int *total_len)
 {
 	while (1)
 	{
@@ -86,7 +86,7 @@ char	*make_line(t_list **list, t_list *node, char *line, int *total_len)
 	}
 }
 
-char	*str_join(t_list *node, char *line, int *total_len)
+char	*str_join(t_glist *node, char *line, int *total_len)
 {
 	char	*joined_line;
 	int		i;
@@ -111,7 +111,7 @@ char	*str_join(t_list *node, char *line, int *total_len)
 	return (joined_line);
 }
 
-char	*add_nul(t_list **list, t_list *node, char *line, int total_len)
+char	*add_nul(t_glist **list, t_glist *node, char *line, int total_len)
 {
 	char	*nul_added_line;
 	int		i;

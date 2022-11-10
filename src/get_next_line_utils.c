@@ -6,16 +6,16 @@
 /*   By: minseok2 <minseok2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:56:25 by minseok2          #+#    #+#             */
-/*   Updated: 2022/11/10 14:50:44 by minseok2         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:04:23 by minseok2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-t_list	*set_current_node(t_list **list, int fd)
+t_glist	*set_current_node(t_glist **list, int fd)
 {
-	t_list	*circulation_list;
-	t_list	*new_node;
+	t_glist	*circulation_list;
+	t_glist	*new_node;
 	size_t	i;
 
 	i = 0;
@@ -28,10 +28,10 @@ t_list	*set_current_node(t_list **list, int fd)
 			break ;
 		circulation_list = circulation_list->next;
 	}
-	new_node = (t_list *)malloc(sizeof(t_list));
+	new_node = (t_glist *)malloc(sizeof(t_glist));
 	if (new_node == NULL)
 		return (NULL);
-	while (i < sizeof(t_list))
+	while (i < sizeof(t_glist))
 		((unsigned char *)new_node)[i++] = 0;
 	new_node->fd = fd;
 	if (*list == NULL)
@@ -40,7 +40,7 @@ t_list	*set_current_node(t_list **list, int fd)
 		return (circulation_list->next = new_node);
 }
 
-char	*allocate_memory(t_list *node, int buf_start_index, int total_len)
+char	*allocate_memory(t_glist *node, int buf_start_index, int total_len)
 {
 	char	*joined_line;
 	int		attach_size;
@@ -78,9 +78,9 @@ void	str_copy(char *joined_line, char *line, int total_len, int option)
 	line = NULL;
 }
 
-char	*free_all(t_list **list, t_list *node, char *line, int option)
+char	*free_all(t_glist **list, t_glist *node, char *line, int option)
 {
-	t_list	*circulation_list;
+	t_glist	*circulation_list;
 
 	if (option == FREE_WITH_LINE)
 	{
